@@ -12,26 +12,26 @@ namespace BasicECommerce.DAL.Concrete.EntityFramework.Repository
     public class EfUsersRepository : IUsersDAL
     {
         BasicECommerceContext BasicECommerceContext = new BasicECommerceContext();
-        public Users Create(Users entity)
+        public Users Create(Users G_entity)
         {
             //Ekle ve satırı geri döndür
-            BasicECommerceContext.Users.Add(entity);
+            BasicECommerceContext.Users.Add(G_entity);
             BasicECommerceContext.SaveChanges();
-            return entity;
+            return G_entity;
         
         }
 
-        public bool Delete(int id)
+        public bool Delete(int G_id)
         {
-            var P_user = Detail(id);
+            var P_user = Detail(G_id);
             BasicECommerceContext.Users.Remove(P_user);
             return BasicECommerceContext.SaveChanges() > 0;
 
         }
 
-        public Users Delete(Users entity)
+        public Users Delete(Users G_entity)
         {
-            var P_user = Detail(entity.UserId);
+            var P_user = Detail(G_entity.UserId);
             BasicECommerceContext.Users.Remove(P_user);
             BasicECommerceContext.SaveChanges();
             return P_user;
@@ -49,15 +49,15 @@ namespace BasicECommerce.DAL.Concrete.EntityFramework.Repository
         //    SiparisTakipContext.Stok.Remove(entity);
         //    return SiparisTakipContext.SaveChanges() > 0;
         //}
-        public Users Detail(int id)
+        public Users Detail(int G_id)
         {
             //SingleOrDefault tek satır döndür yoksa null
-            return BasicECommerceContext.Users.Where(x => x.UserId == id).SingleOrDefault();
+            return BasicECommerceContext.Users.Where(x => x.UserId == G_id).SingleOrDefault();
         }
 
-        public bool Update(Users entity)
+        public bool Update(Users G_entity)
         {
-            BasicECommerceContext.Users.AddOrUpdate(entity);
+            BasicECommerceContext.Users.AddOrUpdate(G_entity);
             return Convert.ToBoolean(BasicECommerceContext.SaveChanges());
              
         }
@@ -67,9 +67,9 @@ namespace BasicECommerce.DAL.Concrete.EntityFramework.Repository
             return BasicECommerceContext.Users.ToList();
         }
 
-        public List<Users> UserList(Expression<Func<Users, bool>> predicate)
+        public List<Users> UserList(Expression<Func<Users, bool>> G_predicate)
         {
-            return BasicECommerceContext.Users.Where(predicate).ToList();
+            return BasicECommerceContext.Users.Where(G_predicate).ToList();
         }
 
 

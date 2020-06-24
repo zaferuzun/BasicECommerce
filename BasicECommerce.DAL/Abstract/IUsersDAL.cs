@@ -7,15 +7,15 @@ namespace BasicECommerce.DAL.Abstract
 {
     public interface IUsersDAL
     {
-        Users Create(Users entity);
+        Users Create(Users G_entity);
         List<Users> UserList();
         //Tüm kombinasyonlara göre filtreleme
         //Users tablosundaki tüm varyasyonlara göre
-        List<Users> UserList(Expression<Func<Users, bool>> predicate);
-        Users Detail(int id);
-        bool Update(Users entity);
-        bool Delete(int id);
-        Users Delete(Users entity);
+        List<Users> UserList(Expression<Func<Users, bool>> G_predicate);
+        Users Detail(int G_id);
+        bool Update(Users G_entity);
+        bool Delete(int G_id);
+        Users Delete(Users G_entity);
 
 
     }
